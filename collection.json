@@ -1,0 +1,250 @@
+{
+    "info": {
+      "name": "HNG 11 Backend Stage Two Task",
+      "description": "Postman collection for HNG 11 Backend Stage Two Task using Laravel Passport",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Auth",
+        "item": [
+          {
+            "name": "Register",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n\t\"firstName\": \"John\",\n\t\"lastName\": \"Doe\",\n\t\"email\": \"john@example.com\",\n\t\"password\": \"password\",\n\t\"phone\": \"1234567890\"\n}"
+              },
+              "url": {
+                "raw": "{{baseURL}}/auth/register",
+                "host": [
+                  "{{baseURL}}"
+                ],
+                "path": [
+                  "auth",
+                  "register"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Login",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n\t\"email\": \"john@example.com\",\n\t\"password\": \"password\"\n}"
+              },
+              "url": {
+                "raw": "{{baseURL}}/auth/login",
+                "host": [
+                  "{{baseURL}}"
+                ],
+                "path": [
+                  "auth",
+                  "login"
+                ]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Users",
+        "item": [
+          {
+            "name": "Get User",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{accessToken}}",
+                  "type": "text"
+                }
+              ],
+              "url": {
+                "raw": "{{baseURL}}/api/users/:id",
+                "host": [
+                  "{{baseURL}}"
+                ],
+                "path": [
+                  "api",
+                  "users",
+                  ":id"
+                ],
+                "variable": [
+                  {
+                    "key": "id",
+                    "value": "<user_id>"
+                  }
+                ]
+              }
+            },
+            "response": []
+          }
+        ]
+      },
+      {
+        "name": "Organisations",
+        "item": [
+          {
+            "name": "Get Organisations",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{accessToken}}",
+                  "type": "text"
+                }
+              ],
+              "url": {
+                "raw": "{{baseURL}}/api/organisations",
+                "host": [
+                  "{{baseURL}}"
+                ],
+                "path": [
+                  "api",
+                  "organisations"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Get Organisation",
+            "request": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{accessToken}}",
+                  "type": "text"
+                }
+              ],
+              "url": {
+                "raw": "{{baseURL}}/api/organisations/:orgId",
+                "host": [
+                  "{{baseURL}}"
+                ],
+                "path": [
+                  "api",
+                  "organisations",
+                  ":orgId"
+                ],
+                "variable": [
+                  {
+                    "key": "orgId",
+                    "value": "<org_id>"
+                  }
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Create Organisation",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{accessToken}}",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n\t\"name\": \"New Organisation\",\n\t\"description\": \"Organisation Description\"\n}"
+              },
+              "url": {
+                "raw": "{{baseURL}}/api/organisations",
+                "host": [
+                  "{{baseURL}}"
+                ],
+                "path": [
+                  "api",
+                  "organisations"
+                ]
+              }
+            },
+            "response": []
+          },
+          {
+            "name": "Add User to Organisation",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{accessToken}}",
+                  "type": "text"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "type": "text"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n\t\"userId\": \"<user_id>\"\n}"
+              },
+              "url": {
+                "raw": "{{baseURL}}/api/organisations/:orgId/users",
+                "host": [
+                  "{{baseURL}}"
+                ],
+                "path": [
+                  "api",
+                  "organisations",
+                  ":orgId",
+                  "users"
+                ],
+                "variable": [
+                  {
+                    "key": "orgId",
+                    "value": "<org_id>"
+                  }
+                ]
+              }
+            },
+            "response": []
+          }
+        ]
+      }
+    ],
+    "variable": [
+      {
+        "key": "baseURL",
+        "value": "http://localhost:8000"
+      },
+      {
+        "key": "accessToken",
+        "value": ""
+      }
+    ]
+  }
