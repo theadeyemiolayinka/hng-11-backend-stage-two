@@ -17,7 +17,9 @@ class OrganisationFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'orgId' => fake()->uuid(),
+            'name' => "{$this->faker->firstName()}'s Organisation",
+            'description' => fake()->sentence(6, true),
         ];
     }
 }

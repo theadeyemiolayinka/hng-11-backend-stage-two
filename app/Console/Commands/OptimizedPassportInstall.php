@@ -8,7 +8,13 @@ use Laravel\Passport\Passport;
 
 class OptimizedPassportInstall extends Command
 {
-    protected $signature = 'passport:optimized-install';
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'passport:optimized-install
+                            {--force : Overwrite keys they already exist}';
     protected $description = 'Optimized installation of Laravel Passport without republishing migrations';
 
     public function handle()
@@ -49,7 +55,7 @@ class OptimizedPassportInstall extends Command
 
         $this->info('Installing Passport...');
 
-        Artisan::call('passport:keys', ['--force' => false, '--no-interaction' => true]);
+        Artisan::call('passport:keys', ['--force' => $this->option('force') ?? false, '--no-interaction' => true]);
 
         $provider = in_array('users', array_keys(config('auth.providers'))) ? 'users' : null;
 

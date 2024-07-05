@@ -49,6 +49,7 @@ class AuthController extends Controller
             ], 201);
         } catch (\Throwable $th) {
             Log::error('[AuthController@register] Error:' . $th->getMessage());
+            // Log::error('[AuthController@register] Error Stack:' . $th->getTraceAsString());
             return response()->json([
                 'status' => 'Bad request',
                 'message' => 'Registration unsuccessful',
