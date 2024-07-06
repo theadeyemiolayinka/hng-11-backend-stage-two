@@ -7,6 +7,7 @@ use App\Http\Requests\RegisterUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Models\Organisation;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -67,7 +68,7 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (!auth()->attempt($credentials)) {
+        if (!Auth::attempt($credentials)) {
             return response()->json([
                 'status' => 'Bad request',
                 'message' => 'Authentication failed',
@@ -114,6 +115,14 @@ class AuthController extends Controller
                 ], 404);
             }
 
+            // Verify if can view user
+            if (!auth()->user()->can('view', $user)) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'User not found',
+                ], 404);
+            }
+
             return response()->json([
                 'status' => 'success',
                 'message' => 'User found',
@@ -121,6 +130,7 @@ class AuthController extends Controller
             ], 200);
         } catch (\Throwable $th) {
             Log::error('[AuthController@show] Error:' . $th->getMessage());
+            // Log::error('[AuthController@show] Error Stack:' . $th->getTraceAsString());
             return response()->json([
                 'status' => 'error',
                 'message' => 'User not found',

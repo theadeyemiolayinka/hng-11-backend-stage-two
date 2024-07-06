@@ -4,7 +4,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
 
-uses(Tests\TestCase::class)->in('Feature', 'Unit');
+uses(Tests\TestCase::class)->in('.');
 
 // once(function () {
 //     Artisan::call('migrate:fresh');

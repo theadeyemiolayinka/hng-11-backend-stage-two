@@ -30,7 +30,9 @@ class OrganisationController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Organisations found',
-            'data' => $organisations,
+            'data' => [
+                'organisations' => $organisations
+            ],
         ], 200);
     }
 

@@ -1,0 +1,7 @@
+{
+    "test-groups": {
+        "auth": [
+            "tests/auth.spec.php"
+        ]
+    }
+}
