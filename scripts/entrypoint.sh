@@ -5,6 +5,9 @@ echo "Running composer"
 composer global require hirak/prestissimo
 composer install --no-dev --working-dir=/var/www/html
 
+chmod 777 storage/oauth-private.key
+chmod 777 storage/oauth-public.key
+
 
 # Cache config and routes
 echo "Caching config..."
