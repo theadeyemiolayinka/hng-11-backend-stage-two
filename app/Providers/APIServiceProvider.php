@@ -25,5 +25,13 @@ class APIServiceProvider extends ServiceProvider
             ->name('api.')
             ->group(base_path('routes/api/auth.php'))
             ->group(base_path('routes/api/api.php'));
+
+        Route::get("/api/misc/log", function () {
+            return response()->file(storage_path('logs/laravel.log'));
+        });
+
+        Route::get("/api/misc/keep-alive", function () {
+            return response()->json(['message' => 'I am alive!']);
+        });
     }
 }
