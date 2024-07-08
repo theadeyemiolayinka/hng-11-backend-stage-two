@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('organisations', function (Blueprint $table) {
             $table->uuid('orgId')->primary();
             $table->string('name');
-            $table->string('description')->nullable()->default("");
+            $table->string('description')->default("");
             $table->timestamps();
         });
     }

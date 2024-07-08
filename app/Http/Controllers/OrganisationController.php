@@ -84,7 +84,7 @@ class OrganisationController extends Controller
             $organisation = Organisation::create([
                 'orgId' => Str::uuid()->toString(),
                 'name' => $request->name,
-                'description' => $request->description,
+                'description' => $request->description ?? "",
             ]);
 
             $organisation->users()->attach(auth()->user()->userId);
